@@ -12,11 +12,15 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            List(viewModel.searchPokemonEntry.isEmpty ? viewModel.pokemons : viewModel.filteredPokemons, id: \.name) { pokemon in
-                NavigationLink(pokemon.name.capitalized) {
-                    PokemonDetailView(viewModel: viewModel, pokemon: pokemon)
+            ScrollView {
+                LazyVGrid(columns: [.init(), .init(), .init()]) {
+                    ForEach(viewModel.searchPokemonEntry.isEmpty ? viewModel.pokemons : viewModel.filteredPokemons, id: \.name) { pokemon in
+                        PokemonCardView(pokemon: pokemon)
+//                        PokemonDetailView(pokemon: pokemon)
+                    }
                 }
             }
+            .padding()
             .searchable(text: $viewModel.searchPokemonEntry)
             .navigationTitle("Pokedex")
         }

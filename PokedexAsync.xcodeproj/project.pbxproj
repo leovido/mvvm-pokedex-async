@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC1A8D8A28E766AB00A66495 /* PokemonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1A8D8928E766AB00A66495 /* PokemonCardView.swift */; };
+		FC1A8D8B28E766AB00A66495 /* PokemonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1A8D8928E766AB00A66495 /* PokemonCardView.swift */; };
 		FCDC089B28E09E4300002902 /* PokedexAsyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDC087328E09E4100002902 /* PokedexAsyncApp.swift */; };
 		FCDC089C28E09E4300002902 /* PokedexAsyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDC087328E09E4100002902 /* PokedexAsyncApp.swift */; };
 		FCDC089D28E09E4300002902 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDC087428E09E4100002902 /* ContentView.swift */; };
@@ -33,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC1A8D8928E766AB00A66495 /* PokemonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCardView.swift; sourceTree = "<group>"; };
 		FCDC087328E09E4100002902 /* PokedexAsyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexAsyncApp.swift; sourceTree = "<group>"; };
 		FCDC087428E09E4100002902 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FCDC087528E09E4300002902 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 			children = (
 				FCDC087428E09E4100002902 /* ContentView.swift */,
 				FCDC08C328E0AA1C00002902 /* PokemonDetailView.swift */,
+				FC1A8D8928E766AB00A66495 /* PokemonCardView.swift */,
 				FCDC087328E09E4100002902 /* PokedexAsyncApp.swift */,
 				FCDC08AF28E09E7100002902 /* Pokemon.swift */,
 				FCDC08B228E09E8400002902 /* PokemonViewModel.swift */,
@@ -291,6 +295,7 @@
 			files = (
 				FCDC089D28E09E4300002902 /* ContentView.swift in Sources */,
 				FCDC08C428E0AA1C00002902 /* PokemonDetailView.swift in Sources */,
+				FC1A8D8A28E766AB00A66495 /* PokemonCardView.swift in Sources */,
 				FCDC089B28E09E4300002902 /* PokedexAsyncApp.swift in Sources */,
 				FCDC08B328E09E8400002902 /* PokemonViewModel.swift in Sources */,
 				FCDC08B028E09E7100002902 /* Pokemon.swift in Sources */,
@@ -303,6 +308,7 @@
 			files = (
 				FCDC089E28E09E4300002902 /* ContentView.swift in Sources */,
 				FCDC08C528E0AA1C00002902 /* PokemonDetailView.swift in Sources */,
+				FC1A8D8B28E766AB00A66495 /* PokemonCardView.swift in Sources */,
 				FCDC089C28E09E4300002902 /* PokedexAsyncApp.swift in Sources */,
 				FCDC08B428E09E8400002902 /* PokemonViewModel.swift in Sources */,
 				FCDC08B128E09E7100002902 /* Pokemon.swift in Sources */,

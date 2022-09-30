@@ -8,9 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+	@StateObject var viewModel: PokemonViewModel = PokemonViewModel()
+	
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+			NavigationView {
+				List(viewModel.searchPokemonEntry.isEmpty ? viewModel.pokemons : viewModel.filteredPokemons, id: \.name) { pokemon in
+					NavigationLink(pokemon.name.capitalized) {
+						PokemonDetailView(viewModel: viewModel, pokemon: pokemon)
+					}
+				}
+				.searchable(text: $viewModel.searchPokemonEntry)
+				.navigationTitle("Pokedex")
+			}
+			.onAppear() {
+				Task {
+					try await viewModel.fetchPokemon()
+				}
+			}
     }
 }
 

@@ -1,10 +1,3 @@
-//
-//  PokemonDetailView.swift
-//  PokedexAsync
-//
-//  Created by Amethyst Raven Sky Wyld on 25/09/2022.
-//
-
 import SwiftUI
 
 struct PokemonDetailView: View {

@@ -1,10 +1,3 @@
-//
-//  PokemonCardView.swift
-//  PokedexAsync
-//
-//  Created by Amethyst Raven Sky Wyld on 30/09/2022.
-//
-
 import SwiftUI
 
 struct PokemonCardView: View {

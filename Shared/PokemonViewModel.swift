@@ -1,10 +1,3 @@
-//
-//  PokemonViewModel.swift
-//  PokedexAsync
-//
-//  Created by Amethyst Raven Sky Wyld on 25/09/2022.
-//
-
 import Combine
 import Foundation
 

@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Shared
-//
-//  Created by Amethyst Raven Sky Wyld on 25/09/2022.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -16,7 +9,7 @@ struct ContentView: View {
 				ScrollView {
 					LazyVGrid(columns: [.init(), .init(), .init()]) {
 						ForEach(viewModel.searchPokemonEntry.isEmpty ? viewModel.pokemons : viewModel.filteredPokemons, id: \.name) { pokemon in
-							NavigationLink("", destination: PokemonCardView(pokemon: pokemon))
+							PokemonCardView(pokemon: pokemon)
 						}
 					}
 					.padding()
@@ -25,18 +18,33 @@ struct ContentView: View {
 				.navigationTitle("Pokedex")
 			}
 			.tabItem {
-				Text("Pokemon")
+				Label("Pokedex", systemImage: "house")
 			}
 			.onAppear {
 				Task {
 					try await viewModel.fetchPokemon()
 				}
 			}
+
 			NavigationView {
-				Text("airsent")
+				Text("ellipsis")
 			}
 			.tabItem {
-				Text("Pokemon")
+				Label("Items", systemImage: "key")
+			}
+
+			NavigationView {
+				Text("ellipsis")
+			}
+			.tabItem {
+				Label("Favorites", systemImage: "star")
+			}
+
+			NavigationView {
+				Text("ellipsis")
+			}
+			.tabItem {
+				Label("Settings", systemImage: "ellipsis")
 			}
 		}
 	}

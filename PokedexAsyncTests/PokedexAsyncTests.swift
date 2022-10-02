@@ -1,10 +1,3 @@
-//
-//  PokemonTests.swift
-//  Tests iOS
-//
-//  Created by Amethyst Raven Sky Wyld on 25/09/2022.
-//
-
 import Foundation
 @testable import PokedexAsync
 import XCTest

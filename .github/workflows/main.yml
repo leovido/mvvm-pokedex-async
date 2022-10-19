@@ -1,0 +1,15 @@
+name: Xcode build
+
+on: 
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/main.yml'
+
+jobs:
+  Xcodeversion:
+    runs-on: macOS
+    steps:
+      - uses: maxim-lobanov/setup-xcode@v1.5.0
+        with:
+          xcode-version: 'latest'

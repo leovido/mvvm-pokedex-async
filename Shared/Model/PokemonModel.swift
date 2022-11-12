@@ -149,14 +149,14 @@ struct GenerationIv: Codable {
 // MARK: - Versions
 
 struct Versions: Codable {
-	let generationI: GenerationI
-	let generationIi: GenerationIi
-	let generationIii: GenerationIii
-	let generationIv: GenerationIv
-	let generationV: GenerationV
-	let generationVi: [String: Home]
-	let generationVii: GenerationVii
-	let generationViii: GenerationViii
+	let generationI: GenerationI?
+	let generationIi: GenerationIi?
+	let generationIii: GenerationIii?
+	let generationIv: GenerationIv?
+	let generationV: GenerationV?
+	let generationVi: [String: Home]?
+	let generationVii: GenerationVii?
+	let generationViii: GenerationViii?
 
 	enum CodingKeys: String, CodingKey {
 		case generationI = "generation-i"
@@ -173,13 +173,13 @@ struct Versions: Codable {
 // MARK: - Sprites
 
 class Sprites: Codable {
-	let backDefault: String
+	let backDefault: String?
 	let backFemale: String?
-	let backShiny: String
+	let backShiny: String?
 	let backShinyFemale: String?
-	let frontDefault: String
+	let frontDefault: String?
 	let frontFemale: String?
-	let frontShiny: String
+	let frontShiny: String?
 	let frontShinyFemale: String?
 	let other: Other?
 	let versions: Versions?
@@ -215,7 +215,7 @@ class Sprites: Codable {
 // MARK: - GenerationI
 
 struct GenerationI: Codable {
-	let redBlue, yellow: RedBlue
+	let redBlue, yellow: RedBlue?
 
 	enum CodingKeys: String, CodingKey {
 		case redBlue = "red-blue"
@@ -226,7 +226,7 @@ struct GenerationI: Codable {
 // MARK: - RedBlue
 
 struct RedBlue: Codable {
-	let backDefault, backGray, frontDefault, frontGray: String
+	let backDefault, backGray, frontDefault, frontGray: String?
 
 	enum CodingKeys: String, CodingKey {
 		case backDefault = "back_default"
@@ -245,7 +245,7 @@ struct GenerationIi: Codable {
 // MARK: - Crystal
 
 struct Crystal: Codable {
-	let backDefault, backShiny, frontDefault, frontShiny: String
+	let backDefault, backShiny, frontDefault, frontShiny: String?
 
 	enum CodingKeys: String, CodingKey {
 		case backDefault = "back_default"
@@ -271,7 +271,7 @@ struct GenerationIii: Codable {
 // MARK: - Emerald
 
 struct Emerald: Codable {
-	let frontDefault, frontShiny: String
+	let frontDefault, frontShiny: String?
 
 	enum CodingKeys: String, CodingKey {
 		case frontDefault = "front_default"
@@ -310,7 +310,7 @@ struct GenerationVii: Codable {
 // MARK: - DreamWorld
 
 struct DreamWorld: Codable {
-	let frontDefault: String
+	let frontDefault: String?
 	let frontFemale: String?
 
 	enum CodingKeys: String, CodingKey {
@@ -342,7 +342,7 @@ struct Other: Codable {
 // MARK: - OfficialArtwork
 
 struct OfficialArtwork: Codable {
-	let frontDefault: String
+	let frontDefault: String?
 
 	enum CodingKeys: String, CodingKey {
 		case frontDefault = "front_default"

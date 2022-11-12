@@ -7,6 +7,28 @@ struct ContentView: View {
 		TabView {
 			NavigationView {
 				ScrollView {
+					ScrollView(.horizontal) {
+						HStack {
+							Button {
+								Task {
+									try await viewModel.fetchGeneration(number: 1)
+								}
+							} label: {
+								Text("Gen 1")
+							}
+
+							Button {
+								Task {
+									try await viewModel.fetchGeneration(number: 2)
+								}
+							} label: {
+								Text("Gen 2")
+							}
+						}
+						.font(.body)
+						.foregroundColor(.pink)
+					}
+					.padding()
 					LazyVGrid(columns: [.init(), .init(), .init()]) {
 						ForEach(viewModel.searchPokemonEntry.isEmpty ? viewModel.pokemons : viewModel.filteredPokemons, id: \.name) { pokemon in
 							PokemonCardView(pokemon: pokemon)

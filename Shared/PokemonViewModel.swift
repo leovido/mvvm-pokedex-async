@@ -2,6 +2,20 @@ import Combine
 import Foundation
 
 final class PokemonService {
+	func fetchNextPokemons(url: String) async throws -> PokemonResponse {
+		let (data, response) = try await URLSession.shared.data(from: URL(string: url)!)
+
+		guard let response = response as? HTTPURLResponse,
+		      (200 ... 399) ~= response.statusCode
+		else {
+			throw NSError(domain: "invalid", code: 0001)
+		}
+
+		let pokemonResponse = try JSONDecoder().decode(PokemonResponse.self, from: data)
+
+		return pokemonResponse
+	}
+
 	func fetchPokemons() async throws -> PokemonResponse {
 		let (data, response) = try await URLSession.shared.data(from: URL(string: "https://pokeapi.co/api/v2/pokemon")!)
 
@@ -45,11 +59,12 @@ struct PokemonResult: Codable, Hashable {
 
 @MainActor
 final class PokemonViewModel: ObservableObject {
-	@Published nonisolated var pokemons: [PokemonResult] = []
-	@Published nonisolated var filteredPokemons: [PokemonResult] = []
-	@Published nonisolated var searchPokemonEntry: String = ""
-	@Published nonisolated var isLoading: Bool = false
-	@Published nonisolated var selectedPokemon: Pokemon?
+	@Published var pokemons: [PokemonResult] = []
+	@Published var filteredPokemons: [PokemonResult] = []
+	@Published var currentResponse: String?
+	@Published var searchPokemonEntry: String = ""
+	@Published var isLoading: Bool = false
+	@Published var selectedPokemon: Pokemon?
 
 	private(set) var subscriptions: Set<AnyCancellable> = []
 
@@ -70,14 +85,33 @@ final class PokemonViewModel: ObservableObject {
 			.store(in: &subscriptions)
 	}
 
+	func fetchNext() async throws {
+		guard let currentResponse = currentResponse else {
+			return
+		}
+		dump("fetching next...")
+
+		isLoading = true
+		let json = try await service.fetchNextPokemons(url: currentResponse)
+		isLoading = false
+
+		pokemons.append(contentsOf: json.results)
+		self.currentResponse = json.next
+	}
+
 	func fetchPokemon() async throws {
+		dump("fetching first pokemons...")
+
 		isLoading = true
 		let json = try await service.fetchPokemons()
 		isLoading = false
 		pokemons = json.results
+		currentResponse = json.next
 	}
 
 	func fetchPokemon(_ pokemon: PokemonResult) async throws {
+		dump("fetching \(pokemon.name)...")
+
 		isLoading = true
 		let pokemon = try await service.fetchPokemon(pokemon)
 		isLoading = false

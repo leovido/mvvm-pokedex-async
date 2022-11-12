@@ -10,24 +10,7 @@ struct PokemonDetailView: View {
 	}
 
 	var body: some View {
-		LazyVStack(alignment: .leading) {
-			Text(pokemon.name.capitalized)
-				.font(.largeTitle)
-				.bold()
-			HStack {
-				Text("Height")
-					.font(.headline)
-				Text(viewModel.selectedPokemon?.height.description ?? "")
-					.font(.body)
-			}
-
-			HStack {
-				Text("Weight")
-					.font(.headline)
-				Text(viewModel.selectedPokemon?.weight.description ?? "")
-					.font(.body)
-			}
-
+		VStack(alignment: .leading) {
 			HStack {
 				VStack {
 					Text("Front")
@@ -70,8 +53,24 @@ struct PokemonDetailView: View {
 				.padding()
 			}
 
+			List {
+				HStack {
+					Text("Height")
+						.font(.headline)
+					Text(viewModel.selectedPokemon?.height.description ?? "")
+						.font(.body)
+				}
+
+				HStack {
+					Text("Weight")
+						.font(.headline)
+					Text(viewModel.selectedPokemon?.weight.description ?? "")
+						.font(.body)
+				}
+			}
 			Spacer()
 		}
+		.navigationTitle(Text(pokemon.name.capitalized))
 		.onAppear {
 			Task {
 				try await self.viewModel.fetchPokemon(pokemon)
@@ -79,3 +78,11 @@ struct PokemonDetailView: View {
 		}
 	}
 }
+
+#if DEBUG
+	struct PokemonDetailView_Previews: PreviewProvider {
+		static var previews: some View {
+			PokemonDetailView(pokemon: .init(name: "Pikachu", url: ""))
+		}
+	}
+#endif

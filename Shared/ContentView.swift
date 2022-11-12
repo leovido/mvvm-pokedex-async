@@ -11,9 +11,18 @@ struct ContentView: View {
 						ForEach(viewModel.searchPokemonEntry.isEmpty ? viewModel.pokemons : viewModel.filteredPokemons, id: \.name) { pokemon in
 							PokemonCardView(pokemon: pokemon)
 						}
+
+						Rectangle()
+							.onAppear(perform: {
+								Task {
+									try await viewModel.fetchNext()
+								}
+							})
+							.foregroundColor(.clear)
 					}
 					.padding()
 				}
+				.listStyle(PlainListStyle())
 				.searchable(text: $viewModel.searchPokemonEntry)
 				.navigationTitle("Pokedex")
 			}

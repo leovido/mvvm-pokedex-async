@@ -9,7 +9,7 @@ class Tests_iOS: XCTestCase {
 	override func tearDownWithError() throws {}
 
 	func testViewModelFetch() async throws {
-		let viewModel = await PokemonViewModel()
+		let viewModel = PokemonViewModel()
 
 		try await viewModel.fetchPokemon()
 

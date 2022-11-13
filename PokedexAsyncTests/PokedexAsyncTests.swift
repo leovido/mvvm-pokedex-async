@@ -2,6 +2,7 @@ import Foundation
 @testable import PokedexAsync
 import XCTest
 
+@MainActor
 class Tests_iOS: XCTestCase {
 	override func setUpWithError() throws {}
 

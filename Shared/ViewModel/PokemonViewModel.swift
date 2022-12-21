@@ -45,8 +45,6 @@ final class PokemonViewModel: ObservableObject {
 		guard let currentResponse = currentResponse else {
 			return
 		}
-		dump("fetching next...")
-
 		isLoading = true
 		let json = try await service.fetchNextPokemons(url: currentResponse)
 		isLoading = false
@@ -56,8 +54,6 @@ final class PokemonViewModel: ObservableObject {
 	}
 
 	func fetchPokemon() async throws {
-		dump("fetching first pokemons...")
-
 		isLoading = true
 		let json = try await service.fetchPokemons()
 		isLoading = false
@@ -66,13 +62,9 @@ final class PokemonViewModel: ObservableObject {
 	}
 
 	func fetchPokemon(_ pokemon: PokemonResult) async throws {
-		dump("fetching \(pokemon.name)...")
-
 		isLoading = true
 		let pokemon = try await service.fetchPokemon(pokemon)
 		isLoading = false
-
-		dump(pokemon.name)
 
 		selectedPokemon = pokemon
 	}

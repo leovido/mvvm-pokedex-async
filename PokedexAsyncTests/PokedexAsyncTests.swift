@@ -27,7 +27,6 @@ class Tests_iOS: XCTestCase {
 		}
 		let json = try! JSONSerialization.jsonObject(with: data)
 
-		dump(json)
 		let pokemons = try! JSONDecoder().decode(Pokemon.self, from: data)
 
 		XCTAssertEqual(pokemons.name, "bulbasaur")
